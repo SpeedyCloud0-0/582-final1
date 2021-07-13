@@ -16,14 +16,14 @@ def verify():
     signature = content.get("sig")
     message = content.get("payload").get("message")
     pk = content.get("payload").get("pk")
-    platform = content.get("payload").get("platform")
+    platform = str(content.get("payload").get("platform"))
 
     # Check platform
-    if platform == "Ethereum":
+    if platform == 'Ethereum':
         # Check if signature is valid
         encoded_msg = eth_account.messages.encode_defunct(text=message)
         result = (eth_account.Account.recover_message(encoded_msg, signature=signature) == pk)
-    elif platform == "Algorand":
+    elif platform == 'Algorand':
         # Check if signature is valid
         result = algosdk.util.verify_bytes(message.encode('utf-8'), signature, pk)
     else:
