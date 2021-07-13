@@ -18,7 +18,7 @@ def verify():
     pk = content["payload"]["pk"]
     platform = content["payload"]["platform"]
 
-    result = True
+    # result = True
 
     # Check platform
     if platform is None or message is None or signature is None or pk is None:
@@ -34,7 +34,7 @@ def verify():
 
     elif platform == 'Algorand':
         # Check if signature is valid
-        result = algosdk.util.verify_bytes(message, signature, pk)
+        result = algosdk.util.verify_bytes(message.encode('utf-8'), signature, pk)
         # result = True
     else:
         result = False
