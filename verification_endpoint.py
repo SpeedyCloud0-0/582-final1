@@ -19,7 +19,7 @@ def verify():
     platform = content["payload"]["platform"]
 
     # Check platform
-    if platform is None:
+    if platform is None or message is None or signature is None or pk is None:
         result = False
 
     elif platform == 'Ethereum':
