@@ -21,15 +21,15 @@ def verify():
     # result = True
 
     # Check platform
-    if platform is None or message is None or signature is None or pk is None:
-        result = False
+    # if platform is None or message is None or signature is None or pk is None:
+    #     result = False
 
-    elif platform == 'Ethereum':
+    if platform == 'Ethereum':
         # Check if signature is valid
-        # if eth_account.Account.recover_message(message, signature.hex()) == pk:
-        #     result = True
-        # else:
-        #     result = False
+        if eth_account.Account.recover_message(message, signature.hex()) == pk:
+            result = True
+        else:
+            result = False
         result = False
 
     elif platform == 'Algorand':
