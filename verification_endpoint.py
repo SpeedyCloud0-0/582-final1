@@ -14,7 +14,7 @@ app.url_map.strict_slashes = False
 def verify():
     content = request.get_json(silent=True)
     signature = content.get("sig")
-    message = content.get("payload").get("message")
+    message = content.get("payload")
     pk = content.get("payload").get("pk")
     platform = content.get("payload").get("platform")
     # platform = 'Algorand'
@@ -23,8 +23,8 @@ def verify():
     if platform == 'Ethereum':
         # Check if signature is valid
         encoded_msg = eth_account.messages.encode_defunct(text=message)
-        result = (eth_account.Account.recover_message(message, signature=signature) == pk)
-    elif platform == 'Algorand':
+        result = (eth_account.Account.recover_message(encoded_msg, signature=signature) == pk)
+    else:
         # Check if signature is valid
         result = algosdk.util.verify_bytes(message.encode('utf-8'), signature, pk)
 
