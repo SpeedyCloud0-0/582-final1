@@ -26,7 +26,8 @@ def verify():
         result = (eth_account.Account.recover_message(encoded_msg, signature=signature) == pk)
     elif platform == 'Algorand':
         # Check if signature is valid
-        result = algosdk.util.verify_bytes(message.encode('utf-8'), signature, pk)
+        # result = algosdk.util.verify_bytes(message.encode('utf-8'), signature, pk)
+        result = False
     else:
         result = False
 
