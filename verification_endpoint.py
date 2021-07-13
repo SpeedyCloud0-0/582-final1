@@ -12,9 +12,6 @@ app.url_map.strict_slashes = False
 @app.route('/verify', methods=['GET', 'POST'])
 def verify():
     content = request.get_json(silent=True)
-
-    # Transfer Json info to string
-    # content_str = json.dumps(content)
     signature = content['sig']
     message = content['payload']['message']
     pk = content['payload']['pk']
@@ -28,9 +25,9 @@ def verify():
         else:
             result = False
 
-    elif platform == 'Algorand':
-        # Check if signature is valid
-        result = algosdk.util.verify_bytes(message, signature, pk)
+    # elif platform == 'Algorand':
+    #     # Check if signature is valid
+    #     result = algosdk.util.verify_bytes(message, signature, pk)
     else:
         result = False
 
