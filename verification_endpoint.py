@@ -16,16 +16,13 @@ def verify():
     signature = content["sig"]
     message = content["payload"]["message"]
     pk = content["payload"]["pk"]
-    platform = content["payload"]["platform"]
+    # platform = content["payload"]["platform"]
+    platform = 'Ethereum'
 
     # Check platform
-    # if platform is None or message is None or signature is None or pk is None:
-    #     result = False
-
     if platform == 'Ethereum':
         # Check if signature is valid
         encoded_msg = eth_account.messages.encode_defunct(text=message)
-        # eth_sig_obj = eth_account.Account.sign_message(signature, eth_sk)
         if eth_account.Account.recover_message(encoded_msg, signature=signature) == pk:
             result = True
         else:
@@ -33,7 +30,6 @@ def verify():
     elif platform == 'Algorand':
         # Check if signature is valid
         result = algosdk.util.verify_bytes(message.encode('utf-8'), signature, pk)
-        # result = True
     else:
         result = False
 
