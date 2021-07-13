@@ -16,8 +16,8 @@ def verify():
     signature = content.get("sig")
     message = content.get("payload").get("message")
     pk = content.get("payload").get("pk")
-    # platform = content.get("payload").get("platform")
-    platform = 'Algorand'
+    platform = content.get("payload").get("platform")
+    # platform = 'Algorand'
 
     # Check platform
     if platform == 'Ethereum':
@@ -27,8 +27,8 @@ def verify():
     elif platform == 'Algorand':
         # Check if signature is valid
         result = algosdk.util.verify_bytes(message.encode('utf-8'), signature, pk)
-    else:
-        result = False
+    # else:
+    #     result = False
 
     # result = True  # Should only be true if signature validates
     return jsonify(result)
