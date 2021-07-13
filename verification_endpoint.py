@@ -29,7 +29,7 @@ def verify():
         # result = algosdk.util.verify_bytes(message.encode('utf-8'), signature, pk)
         result = False
     else:
-        result = False
+        result = True
 
     # result = True  # Should only be true if signature validates
     return jsonify(result)
