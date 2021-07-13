@@ -13,10 +13,10 @@ app.url_map.strict_slashes = False
 def verify():
     content = request.get_json(silent=True)
     content_str = json.loads(content)
-    signature = content_str['sig']
-    message = content_str['payload']['message']
-    pk = content_str['payload']['pk']
-    platform = content_str['payload']['platform']
+    signature = content_str["sig"]
+    message = content_str["payload"]["message"]
+    pk = content_str["payload"]["pk"]
+    platform = content_str["payload"]["platform"]
 
     # Check platform
     if platform == 'Ethereum':
