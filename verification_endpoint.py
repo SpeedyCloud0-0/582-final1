@@ -18,6 +18,8 @@ def verify():
     pk = content["payload"]["pk"]
     platform = content["payload"]["platform"]
 
+    result = True
+
     # Check platform
     if platform is None or message is None or signature is None or pk is None:
         result = False
