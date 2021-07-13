@@ -23,12 +23,10 @@ def verify():
     if platform == 'Ethereum':
         # Check if signature is valid
         encoded_msg = eth_account.messages.encode_defunct(text=message)
-        result = (eth_account.Account.recover_message(encoded_msg, signature=signature) == pk)
+        result = (eth_account.Account.recover_message(message, signature=signature) == pk)
     elif platform == 'Algorand':
         # Check if signature is valid
         result = algosdk.util.verify_bytes(message.encode('utf-8'), signature, pk)
-    # else:
-    #     result = False
 
     # result = True  # Should only be true if signature validates
     return jsonify(result)
