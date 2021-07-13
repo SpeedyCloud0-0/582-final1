@@ -27,9 +27,9 @@ def verify():
     elif platform == 'Algorand':
         # Check if signature is valid
         # result = algosdk.util.verify_bytes(message.encode('utf-8'), signature, pk)
-        result = False
-    else:
         result = True
+    else:
+        result = False
 
     # result = True  # Should only be true if signature validates
     return jsonify(result)
