@@ -32,13 +32,13 @@ def verify():
 
     elif platform == 'Algorand':
         # Check if signature is valid
-        # result = algosdk.util.verify_bytes(message, signature, pk)
-        result = True
+        result = algosdk.util.verify_bytes(message, signature, pk)
+        # result = True
     else:
         result = False
 
     # result = True  # Should only be true if signature validates
-    return jsonify(True)
+    return jsonify(result)
 
 
 if __name__ == '__main__':
