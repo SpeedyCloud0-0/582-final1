@@ -15,9 +15,12 @@ def verify():
     content = request.get_json(silent=True)
     # signature = content["sig"]
     signature = content.get("sig")
-    message = content["payload"]["message"]
-    pk = content["payload"]["pk"]
-    platform = content["payload"]["platform"]
+    # message = content["payload"]["message"]
+    # pk = content["payload"]["pk"]
+    # platform = content["payload"]["platform"]
+    message = content.get("payload").get("message")
+    pk = content.get("payload").get("pk")
+    platform = content.get("payload").get("platform")
 
     # Check platform
     if platform == 'Ethereum':
