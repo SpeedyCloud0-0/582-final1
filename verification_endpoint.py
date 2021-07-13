@@ -12,16 +12,11 @@ app.url_map.strict_slashes = False
 @app.route('/verify', methods=['GET', 'POST'])
 def verify():
     content = request.get_json(silent=True)
+    app.logger.info('Test')
     signature = content["sig"]
     message = content["payload"]["message"]
     pk = content["payload"]["pk"]
     platform = content["payload"]["platform"]
-    app.logger.info('Test')
-
-    # if platform == 'Ethereum':
-    #     result = True
-    # else:
-    #     result = False
 
     # Check platform
     if platform == 'Ethereum':
