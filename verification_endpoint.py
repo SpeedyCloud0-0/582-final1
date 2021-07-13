@@ -3,8 +3,10 @@ from flask_restful import Api
 import json
 import eth_account
 import algosdk
+import logging
 
 app = Flask(__name__)
+logging.basicConfig(level=logging.DEBUG)
 api = Api(app)
 app.url_map.strict_slashes = False
 
