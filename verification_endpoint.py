@@ -16,7 +16,8 @@ def verify():
     signature = content.get("sig")
     message = content.get("payload").get("message")
     pk = content.get("payload").get("pk")
-    platform = str(content.get("payload").get("platform"))
+    # platform = content.get("payload").get("platform")
+    platform = 'Algorand'
 
     # Check platform
     if platform == 'Ethereum':
