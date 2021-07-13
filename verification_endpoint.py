@@ -16,6 +16,7 @@ def verify():
     message = content["payload"]["message"]
     pk = content["payload"]["pk"]
     platform = content["payload"]["platform"]
+    app.logger.info('Test')
 
     # if platform == 'Ethereum':
     #     result = True
@@ -39,7 +40,7 @@ def verify():
 
 
     # result = True  # Should only be true if signature validates
-    return jsonify(True)
+    return jsonify(result)
 
 
 if __name__ == '__main__':
