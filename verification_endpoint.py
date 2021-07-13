@@ -14,7 +14,7 @@ app.url_map.strict_slashes = False
 def verify():
     content = request.get_json(silent=True)
     signature = content.get("sig")
-    message = content.get("payload")
+    message = json.dumps(content.get("payload"))
     pk = content.get("payload").get("pk")
     platform = content.get("payload").get("platform")
     # platform = 'Algorand'
