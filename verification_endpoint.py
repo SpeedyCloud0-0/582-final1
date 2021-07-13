@@ -17,6 +17,8 @@ def verify():
     message = content["payload"]["message"]
     pk = content["payload"]["pk"]
     platform = content["payload"]["platform"]
+
+    print(signature)
     #
     # # Check platform
     # if platform == 'Ethereum':
