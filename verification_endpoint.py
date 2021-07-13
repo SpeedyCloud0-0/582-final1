@@ -15,12 +15,12 @@ def verify():
 
     print("test")
     # Transfer Json info to string
-    content_str = json.dumps(content)
-    signature = content_str['sig']
-    message = content_str['payload']['message']
-
-    print("test {}".format(signature))
-    print(message)
+    # content_str = json.dumps(content)
+    # signature = content_str['sig']
+    # message = content_str['payload']['message']
+    #
+    # print("test {}".format(signature))
+    # print(message)
 
     # Check if signature is valid
 
