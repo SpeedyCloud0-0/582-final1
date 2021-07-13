@@ -13,24 +13,19 @@ app.url_map.strict_slashes = False
 def verify():
     content = request.get_json(silent=True)
 
-    # print("test")
-    # # Transfer Json info to string
-    # content_str = json.dumps(content)
-    # signature = content_str['sig']
-    # message = content_str['payload']['message']
-    #
-    # print("test {}".format(signature))
-    # print(message)
-    #
-    # # Check if signature is valid
-    #
-    # result = True  # Should only be true if signature validates
-    # return jsonify(test="lskjj")
+    print("test")
+    # Transfer Json info to string
+    content_str = json.dumps(content)
+    signature = content_str['sig']
+    message = content_str['payload']['message']
 
-    #Check if signature is valid
-    result = True #Should only be true if signature validates
+    print("test {}".format(signature))
+    print(message)
+
+    # Check if signature is valid
+
+    result = True  # Should only be true if signature validates
     return jsonify(result)
-
 
 if __name__ == '__main__':
     app.run(port='5002')
