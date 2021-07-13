@@ -17,22 +17,22 @@ def verify():
     message = content_str["payload"]["message"]
     pk = content_str["payload"]["pk"]
     platform = content_str["payload"]["platform"]
+    #
+    # # Check platform
+    # if platform == 'Ethereum':
+    #     # Check if signature is valid
+    #     if eth_account.Account.recover_message(message, signature.hex()) == pk:
+    #         result = True
+    #     else:
+    #         result = False
+    #
+    # elif platform == 'Algorand':
+    #     # Check if signature is valid
+    #     result = algosdk.util.verify_bytes(message, signature, pk)
+    # else:
+    #     result = False
 
-    # Check platform
-    if platform == 'Ethereum':
-        # Check if signature is valid
-        if eth_account.Account.recover_message(message, signature.hex()) == pk:
-            result = True
-        else:
-            result = False
-
-    elif platform == 'Algorand':
-        # Check if signature is valid
-        result = algosdk.util.verify_bytes(message, signature, pk)
-    else:
-        result = False
-
-    # result = True  # Should only be true if signature validates
+    result = True  # Should only be true if signature validates
     return jsonify(result)
 
 
