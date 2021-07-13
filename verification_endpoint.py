@@ -26,7 +26,9 @@ def verify():
 
     if platform == 'Ethereum':
         # Check if signature is valid
-        if eth_account.Account.recover_message(message, signature.hex()) == pk:
+        encoded_msg = eth_account.messages.encode_defunct(text=message)
+        # eth_sig_obj = eth_account.Account.sign_message(signature, eth_sk)
+        if eth_account.Account.recover_message(encoded_msg, signature=signature.hex()) == pk:
             result = True
         else:
             result = False
